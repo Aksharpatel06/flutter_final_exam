@@ -39,7 +39,7 @@ class DetailsPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'DateTime : ',
                       style: TextStyle(
                         color: ternaryColor,
@@ -71,7 +71,7 @@ class DetailsPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Categorize  : ',
                       style: TextStyle(
                         color: ternaryColor,
@@ -92,18 +92,18 @@ class DetailsPage extends StatelessWidget {
                             height: 2,
                             color: secondaryColor,
                           ),
-                          items: [
+                          items: const [
                             DropdownMenuItem(
-                              child: Text('Work'),
                               value: 'Work',
+                              child: Text('Work'),
                             ),
                             DropdownMenuItem(
-                              child: Text('Personal'),
                               value: 'Personal',
+                              child: Text('Personal'),
                             ),
                             DropdownMenuItem(
-                              child: Text('Miscellaneous'),
                               value: 'Miscellaneous',
+                              child: Text('Miscellaneous'),
                             ),
                           ],
                           onChanged: (value) {
@@ -115,7 +115,7 @@ class DetailsPage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Padding(
@@ -155,7 +155,7 @@ class DetailsPage extends StatelessWidget {
                       width: double.infinity,
                       child: Text(
                         homeController.isUpadate.value ? 'Update' : 'Save',
-                        style: TextStyle(color: Colors.white, fontSize: 22),
+                        style: const TextStyle(color: Colors.white, fontSize: 22),
                       ),
                     ),
                   ),
@@ -182,7 +182,7 @@ class TextFiledDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
       child: TextFormField(
         validator: (value) {
           if (value!.isEmpty || value == '') {
@@ -192,11 +192,11 @@ class TextFiledDetails extends StatelessWidget {
         },
         controller: txtName,
         decoration: InputDecoration(
-            border: UnderlineInputBorder(
+            border: const UnderlineInputBorder(
               borderSide: BorderSide(color: primaryColor),
             ),
             hintText: text,
-            hintStyle: TextStyle(color: Colors.grey)),
+            hintStyle: const TextStyle(color: Colors.grey)),
       ),
     );
   }
