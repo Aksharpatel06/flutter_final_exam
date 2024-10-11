@@ -41,6 +41,7 @@ class DbService {
   }
 
   Future<void> updateDatabase(Map notesDetails,int id) async {
+    print(id.toString());
     final db = await database;
     List args = [
       notesDetails['Title'],

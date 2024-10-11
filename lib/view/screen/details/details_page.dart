@@ -46,7 +46,6 @@ class DetailsPage extends StatelessWidget {
                         fontSize: 18,
                       ),
                     ),
-
                     TextButton(
                       onPressed: () {
                         showDatePicker(
@@ -122,19 +121,23 @@ class DetailsPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Obx(
-                  ()=> GestureDetector(
+                  () => GestureDetector(
                     onTap: () {
                       if (homeController.key.currentState!.validate()) {
                         Map json = {
                           'Title': homeController.txtTitle.text,
                           'Content': homeController.txtContent.text,
-                          'Datetime': '${homeController.dateTime.day}-${homeController.dateTime.month}',
+                          'Datetime':
+                              '${homeController.dateTime.day}-${homeController.dateTime.month}',
                           'Category': homeController.category.value
                         };
-                        if(homeController.isUpadate.value)
-                          {
-                            DbService.dbService.updateDatabase(json,homeController.updateIndex.value);
-                          }else{
+                        if (homeController.isUpadate.value) {
+                          DbService.dbService.updateDatabase(
+                              json,
+                              homeController
+                                  .notesList[homeController.updateIndex.value]
+                                  .id);
+                        } else {
                           DbService.dbService.insertDatabase(json);
                         }
                         homeController.txtTitle.clear();
@@ -151,7 +154,7 @@ class DetailsPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10)),
                       width: double.infinity,
                       child: Text(
-                        homeController.isUpadate.value?'Update':'Save',
+                        homeController.isUpadate.value ? 'Update' : 'Save',
                         style: TextStyle(color: Colors.white, fontSize: 22),
                       ),
                     ),
