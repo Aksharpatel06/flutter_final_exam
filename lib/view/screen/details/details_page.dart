@@ -4,6 +4,8 @@ import 'package:flutter_final_exam/view/controller/home_controller.dart';
 import 'package:flutter_final_exam/view/helper/db_services.dart';
 import 'package:get/get.dart';
 
+import 'componects/text_field_details.dart';
+
 class DetailsPage extends StatelessWidget {
   const DetailsPage({super.key});
 
@@ -169,35 +171,3 @@ class DetailsPage extends StatelessWidget {
   }
 }
 
-class TextFiledDetails extends StatelessWidget {
-  const TextFiledDetails({
-    super.key,
-    required this.txtName,
-    required this.text,
-  });
-
-  final TextEditingController txtName;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-      child: TextFormField(
-        validator: (value) {
-          if (value!.isEmpty || value == '') {
-            return 'Enter The Details';
-          }
-          return null;
-        },
-        controller: txtName,
-        decoration: InputDecoration(
-            border: const UnderlineInputBorder(
-              borderSide: BorderSide(color: primaryColor),
-            ),
-            hintText: text,
-            hintStyle: const TextStyle(color: Colors.grey)),
-      ),
-    );
-  }
-}
