@@ -81,10 +81,13 @@ class SigninScreen extends StatelessWidget {
                     String status = await GoogleServices.googleServices
                         .createAccount(homeController.txtEmail.text,
                             homeController.txtPwd.text);
-                    if(status =='Success')
-                      {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage(),));
-                      }
+                    if (status == 'Success') {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ));
+                    }
                   },
                 ),
               ),
