@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_final_exam/view/helper/db_services.dart';
+import 'package:flutter_final_exam/view/helper/google_services.dart';
 import 'package:flutter_final_exam/view/modal/notes_modal.dart';
 import 'package:get/get.dart';
 
@@ -46,5 +47,14 @@ class HomeController extends GetxController{
     txtContent = TextEditingController(text: notesList[index].content);
     category.value = notesList[index].category;
     update();
+  }
+
+
+  void allDataStoreToDatabase()
+  {
+    for(NotesModal notes in notesList)
+      {
+        GoogleServices.googleServices.addToAllDataStoreToFirebase(notes.modalToMap(notes));
+      }
   }
 }

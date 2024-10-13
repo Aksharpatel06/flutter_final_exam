@@ -12,13 +12,23 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(seconds: 2), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => GoogleServices.googleServices.firebaseAuth.currentUser==null?SigninScreen():HomePage(),));
-    },);
-    return Scaffold(
+    Timer(
+      const Duration(seconds: 2),
+      () {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  GoogleServices.googleServices.firebaseAuth.currentUser == null
+                      ? const SigninScreen()
+                      : const HomePage(),
+            ));
+      },
+    );
+    return const Scaffold(
       backgroundColor: bgColor,
       body: Center(
-        child:  Icon(
+        child: Icon(
           Icons.edit_note,
           color: primaryColor,
           size: 150,

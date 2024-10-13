@@ -18,7 +18,7 @@ class NotesModal {
         id: json['Id']);
   }
 
-  Map modalToMap(NotesModal notes)
+  Map<String, dynamic> modalToMap(NotesModal notes)
   {
     return {
       'Id':notes.id,

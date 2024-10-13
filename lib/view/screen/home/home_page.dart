@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_final_exam/utils/color.dart';
 import 'package:flutter_final_exam/view/controller/home_controller.dart';
 import 'package:flutter_final_exam/view/screen/details/details_page.dart';
+import 'package:flutter_final_exam/view/screen/stoarage/stoarage_page.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
@@ -30,7 +31,9 @@ class HomePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(()=>StoaragePage(),duration: Duration(milliseconds:1000),transition: Transition.leftToRight);
+              },
               icon: const Icon(
                 Icons.filter_alt_rounded,
                 color: Colors.white,
