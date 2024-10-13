@@ -32,7 +32,9 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: IconButton(
               onPressed: () {
-                Get.to(()=>StoaragePage(),duration: Duration(milliseconds:1000),transition: Transition.leftToRight);
+                Get.to(() => StoaragePage(),
+                    duration: Duration(milliseconds: 1000),
+                    transition: Transition.leftToRight);
               },
               icon: const Icon(
                 Icons.filter_alt_rounded,
@@ -42,58 +44,71 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Obx(
-        () => (homeController.notesList.isEmpty)
-            ? Center(
-                child: Text(
-                  'Notes is Empty',
-                  style: TextStyle(color: primaryColor, fontSize: 20),
-                ),
-              )
-            : ListView.builder(
-                itemCount: homeController.notesList.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      child: ListTile(
-                        title: Text(
-                          homeController.notesList[index].title,
-                          style: TextStyle(color: primaryColor),
-                        ),
-                        subtitle: Text(
-                          homeController.notesList[index].content,
-                          style: TextStyle(color: primaryColor),
-                        ),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                                onPressed: () {
-                                  homeController.editDetails(index);
-                                  Get.to(() => const DetailsPage(),
-                                      duration: const Duration(milliseconds: 1000),
-                                      transition: Transition.leftToRight);
-                                },
-                                icon: Icon(
-                                  Icons.edit,
-                                  color: primaryColor,
-                                )),
-                            IconButton(
-                                onPressed: () {
-                                  homeController.deleteNotes(index);
-                                },
-                                icon: Icon(
-                                  Icons.delete_outline,
-                                  color: primaryColor,
-                                )),
-                          ],
-                        ),
+      body: Column(
+        children: [
+          SearchBar(
+
+            onChanged: (value) {
+              homeController.searchData(value);
+            },
+          ),
+          Expanded(
+            child: Obx(
+              () => (homeController.notesList.isEmpty)
+                  ? Center(
+                      child: Text(
+                        'Notes is Empty',
+                        style: TextStyle(color: primaryColor, fontSize: 20),
                       ),
+                    )
+                  : ListView.builder(
+                      itemCount: homeController.notesList.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Card(
+                            child: ListTile(
+                              title: Text(
+                                homeController.notesList[index].title,
+                                style: TextStyle(color: primaryColor),
+                              ),
+                              subtitle: Text(
+                                homeController.notesList[index].content,
+                                style: TextStyle(color: primaryColor),
+                              ),
+                              trailing: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  IconButton(
+                                      onPressed: () {
+                                        homeController.editDetails(index);
+                                        Get.to(() => const DetailsPage(),
+                                            duration: const Duration(
+                                                milliseconds: 1000),
+                                            transition: Transition.leftToRight);
+                                      },
+                                      icon: Icon(
+                                        Icons.edit,
+                                        color: primaryColor,
+                                      )),
+                                  IconButton(
+                                      onPressed: () {
+                                        homeController.deleteNotes(index);
+                                      },
+                                      icon: Icon(
+                                        Icons.delete_outline,
+                                        color: primaryColor,
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

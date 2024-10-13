@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController{
   TextEditingController txtTitle = TextEditingController();
   TextEditingController txtEmail = TextEditingController();
+  TextEditingController txtSearch = TextEditingController();
   TextEditingController txtPwd = TextEditingController();
   TextEditingController txtContent = TextEditingController();
   DateTime dateTime = DateTime.now();
@@ -27,6 +28,18 @@ class HomeController extends GetxController{
   async {
     List notes = await DbService.dbService.dataShow();
     notesList.value = notes.map((e) => NotesModal(e),).toList();
+    update();
+    notesList.refresh();
+  }
+
+  void searchData(String value)
+  {
+    if(value.isNotEmpty || value!='')
+      {
+        notesList.value = notesList.where((notes) => notes.title.contains(value),).toList();
+      } else{
+      getDataList();
+    }
     update();
     notesList.refresh();
   }
