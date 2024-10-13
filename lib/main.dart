@@ -1,8 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_final_exam/view/controller/home_controller.dart';
-import 'package:flutter_final_exam/view/screen/home/home_page.dart';
-import 'package:flutter_final_exam/view/screen/sign/sign_in.dart';
 import 'package:flutter_final_exam/view/screen/splash/splash_page.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(HomeController());
-    return GetMaterialApp(
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashPage(),
     );
