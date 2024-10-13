@@ -10,7 +10,7 @@ class GoogleServices {
 
   Future<String> createAccount(String email, String pwd) async {
     try {
-      final credential = await firebaseAuth.createUserWithEmailAndPassword(
+      await firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: pwd,
       );
@@ -25,7 +25,7 @@ class GoogleServices {
 
   void addToAllDataStoreToFirebase(Map<String, dynamic> data) {
     CollectionReference reference = firestore.collection('notes');
-    reference.add(data);
+    reference.doc(data['Id'].toString()).set(data);
   }
 
   Stream<QuerySnapshot> getData() {

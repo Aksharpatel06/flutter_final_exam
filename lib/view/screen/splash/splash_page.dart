@@ -30,7 +30,7 @@ class SplashPage extends StatelessWidget {
       body: Center(
         child: Icon(
           Icons.edit_note,
-          color: primaryColor,
+          color: ternaryColor,
           size: 150,
         ),
       ),
