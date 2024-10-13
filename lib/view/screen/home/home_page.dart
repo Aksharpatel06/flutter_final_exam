@@ -32,8 +32,8 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: IconButton(
               onPressed: () {
-                Get.to(() => StoaragePage(),
-                    duration: Duration(milliseconds: 1000),
+                Get.to(() => const StoaragePage(),
+                    duration: const Duration(milliseconds: 1000),
                     transition: Transition.leftToRight);
               },
               icon: const Icon(
@@ -47,7 +47,6 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           SearchBar(
-
             onChanged: (value) {
               homeController.searchData(value);
             },
@@ -55,7 +54,7 @@ class HomePage extends StatelessWidget {
           Expanded(
             child: Obx(
               () => (homeController.notesList.isEmpty)
-                  ? Center(
+                  ? const Center(
                       child: Text(
                         'Notes is Empty',
                         style: TextStyle(color: primaryColor, fontSize: 20),
@@ -70,11 +69,11 @@ class HomePage extends StatelessWidget {
                             child: ListTile(
                               title: Text(
                                 homeController.notesList[index].title,
-                                style: TextStyle(color: primaryColor),
+                                style: const TextStyle(color: primaryColor),
                               ),
                               subtitle: Text(
                                 homeController.notesList[index].content,
-                                style: TextStyle(color: primaryColor),
+                                style: const TextStyle(color: primaryColor),
                               ),
                               trailing: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -87,7 +86,7 @@ class HomePage extends StatelessWidget {
                                                 milliseconds: 1000),
                                             transition: Transition.leftToRight);
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.edit,
                                         color: primaryColor,
                                       )),
@@ -95,7 +94,7 @@ class HomePage extends StatelessWidget {
                                       onPressed: () {
                                         homeController.deleteNotes(index);
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.delete_outline,
                                         color: primaryColor,
                                       )),
